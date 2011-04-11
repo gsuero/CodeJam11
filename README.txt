@@ -29,8 +29,3 @@ Instrucciones para “instalar” el software compliado /CMP/.
 -----
 1. Instalar el PuestoDeQuipe.ear en el application server Glassfish 3.1+ suministrado.
 2. Correr script.sql en base de datos derby del Glassfish. por default user: app, password: app
-
-
-
-
-Cualquier aclarando - Para ejecutar mi sistema debes primero “ sudo apt-get DevDom ” o “Instala el IIS Express”.

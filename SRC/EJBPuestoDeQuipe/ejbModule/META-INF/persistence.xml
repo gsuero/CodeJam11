@@ -1,0 +1,22 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	version="1.0">
+	<persistence-unit name="PuestoDeQuipeService"  transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider> 
+        <!-- JNDI name of the database resource to use -->
+        <non-jta-data-source>jdbc/__default</non-jta-data-source>  
+        <class>com.pmf.codejam.entity.InventoryItem</class> 
+        <class>com.pmf.codejam.entity.Ingredient</class> 
+        <class>com.pmf.codejam.entity.Product</class>
+        <class>com.pmf.codejam.entity.OrderEntity</class>
+        <class>com.pmf.codejam.entity.OrderDetail</class>
+        <class>com.pmf.codejam.entity.Special</class>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>  
+        <property name="javax.persistence.jdbc.driver"
+              value="org.apache.derby.jdbc.EmbeddedDriver" />
+            <property name="hibernate.hbm2ddl.auto" value="update"/> 
+            <property name="hibernate.show_sql" value="true"/> 
+            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
+        </properties> 
+	</persistence-unit>
+</persistence>

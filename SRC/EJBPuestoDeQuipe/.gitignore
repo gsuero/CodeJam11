@@ -1,0 +1,16 @@
+/build
+<<<<<<< HEAD
+=======
+/build
+
+<<<<<<< HEAD
+.settings
+.classpath
+.project
+>>>>>>> branch 'refs/heads/master' of ssh://git@github.com/PMFTeam/PuestoDeQuipe.git
+=======
+
+.settings
+.classpath
+.project
+>>>>>>> branch 'refs/heads/master' of ssh://git@github.com/PMFTeam/PuestoDeQuipe.git

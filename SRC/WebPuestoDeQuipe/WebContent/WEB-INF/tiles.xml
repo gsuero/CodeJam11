@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions SYSTEM "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition template="/template/default/Base.jsp" name="baseLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/template/default/header.jsp" />
+		<put-attribute name="menu" value="/template/default/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/template/default/footer.jsp" />
+	</definition>
+	
+	<definition template="/template/popup/Base.jsp" name="popupLayout">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/template/popup/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/template/popup/footer.jsp" />
+	</definition>
+	
+	<definition name="/home.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Bienvenido a Puesto De Quipe" />
+		<put-attribute name="body" value="/Home.jsp" />
+	</definition>
+	<definition name="/order.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Ordenes" />
+		<put-attribute name="body" value="/order/order.jsp" />
+	</definition>
+	<definition name="/us.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Nosotros" />
+		<put-attribute name="body" value="/us.jsp" />
+	</definition>
+	
+	<definition name="/orderProcessed.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Crea tu Orden" />
+		<put-attribute name="body" value="/order/orderProcessed.jsp" />
+	</definition>
+	
+	<definition name="/products.admin.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Listado Productos" />
+		<put-attribute name="body" value="/admin/products.jsp" />
+	</definition>
+	
+	<definition name="/ingredients.admin.tiles" extends="popupLayout">
+		<put-attribute name="title" value="Ingredientes" />
+		<put-attribute name="body" value="/admin/ingredients.jsp" />
+	</definition>
+
+	<definition name="/special.admin.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Especiales / Combos" />
+		<put-attribute name="body" value="/admin/special.jsp" />
+	</definition>
+	
+	<definition name="/login.admin.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Iniciar sesion" />
+		<put-attribute name="body" value="/admin/login.jsp" />
+	</definition>
+	<definition name="/loginsuccess.admin.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Iniciar sesion" />
+		<put-attribute name="body" value="/admin/loginSuccess.jsp" />
+	</definition>
+</tiles-definitions>

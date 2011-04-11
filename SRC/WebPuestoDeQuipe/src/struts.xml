@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.action.extension" value="do" />
+	<constant name="struts.serve.static" value="true" />
+	<package name="commons" namespace="/" extends="struts-default">
+		<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"/>
+		</result-types>
+	 	<interceptors>
+			<interceptor name="login" class="com.pmf.codejam.interceptor.AuthorizeInterceptor"/>
+		</interceptors>
+	
+	</package>
+
+	<package name="website" namespace="/" extends="commons">
+		<action name="Home" class="com.pmf.codejam.web.action.Home">
+			<result name="success" type="tiles">/home.tiles</result>
+		</action>
+		
+		<action name="Ordenar" class="com.pmf.codejam.web.action.order.OrderAction">
+			<result name="success" type="tiles">/order.tiles</result>
+		</action>
+		<action name="procesarOrden" class="com.pmf.codejam.web.action.order.OrderAction" method="processOrder">
+			<result name="success" type="tiles">/orderProcessed.tiles</result>
+		</action>
+		<action name="Nosotros" class="com.pmf.codejam.web.action.Us">
+			<result name="success" type="tiles">/us.tiles</result>
+		</action>
+	</package>
+	
+	<package name="adminess" namespace="/admin" extends="commons">
+		<action name="Salir" class="com.pmf.codejam.web.action.admin.LoginAction" method="doLogOut">
+			<result name="success" type="tiles">/login.admin.tiles</result>
+		</action>
+		<action name="Login" class="com.pmf.codejam.web.action.admin.LoginAction">
+			<result name="success" type="tiles">/login.admin.tiles</result>
+		</action>
+		<action name="procesarLogin" class="com.pmf.codejam.web.action.admin.LoginAction" method="doLogin">
+			<result name="error" type="tiles">/login.admin.tiles</result>
+			<result name="success" type="tiles">/loginsuccess.admin.tiles</result>
+		</action>
+		<action name="Productos" class="com.pmf.codejam.web.action.admin.ProductsAction">
+			<interceptor-ref name="login" /> 
+		 	<interceptor-ref name="servletConfig"/>
+    		<interceptor-ref name="basicStack"/>
+			<result name="login" type="tiles">/login.admin.tiles</result>
+			<result name="success" type="tiles">/products.admin.tiles</result>
+		</action>
+		<action name="Ingredientes" class="com.pmf.codejam.web.action.admin.IngredientsAction">
+			<interceptor-ref name="login" /> 
+		 	<interceptor-ref name="servletConfig"/>
+    		<interceptor-ref name="basicStack"/>
+			<result name="login" type="tiles">/login.admin.tiles</result>
+			<result name="success" type="tiles">/ingredients.admin.tiles</result>
+		</action>
+		<action name="Especiales" class="com.pmf.codejam.web.action.admin.SpecialAction">
+			<interceptor-ref name="login" /> 
+		 	<interceptor-ref name="servletConfig"/>
+    		<interceptor-ref name="basicStack"/>
+			<result name="login" type="tiles">/login.admin.tiles</result>
+			<result name="success" type="tiles">/special.admin.tiles</result>
+		</action>
+		<action name="ProcesarEspeciales" class="com.pmf.codejam.web.action.admin.SpecialAction" method="save">
+			<interceptor-ref name="login" /> 
+		 	<interceptor-ref name="servletConfig"/>
+    		<interceptor-ref name="basicStack"/>
+			<result name="login" type="tiles">/login.admin.tiles</result>
+			<result name="success" type="tiles">/special.admin.tiles</result>
+			<result name="error" type="tiles">/special.admin.tiles</result>
+		</action>
+		<action name="Cocina" class="com.pmf.codejam.web.action.admin.SpecialAction" method="save">
+			<interceptor-ref name="login" /> 
+		 	<interceptor-ref name="servletConfig"/>
+    		<interceptor-ref name="basicStack"/>
+			<result name="login" type="tiles">/login.admin.tiles</result>
+			<result name="success" type="tiles">/special.admin.tiles</result>
+			<result name="error" type="tiles">/special.admin.tiles</result>
+		</action>
+	</package>
+		
+	<package name="adminAjaxCalls" namespace="/ajax/admin" extends="commons">
+		<action name="grabarIngredientes" class="com.pmf.codejam.web.action.admin.IngredientsAction" method="saveIngredient" />
+		<action name="ingredientesPorProducto" class="com.pmf.codejam.web.action.admin.IngredientsAction" method="ingredientsPerProduct" />	
+		<action name="listadoProductos" class="com.pmf.codejam.web.action.admin.ProductsAction" method="products" />
+		<action name="actualizarProductos" class="com.pmf.codejam.web.action.admin.ProductsAction" method="saveProduct" />
+	</package>
+</struts>
